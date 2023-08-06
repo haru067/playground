@@ -22,6 +22,7 @@ import androidx.compose.ui.unit.dp
 import com.haru067.playground.components.ButtonExample
 import com.haru067.playground.components.CarouselExample
 import com.haru067.playground.components.TextFieldExample
+import com.haru067.playground.components.VerificationCodeInputExample
 import com.haru067.playground.ui.theme.PlaygroundTheme
 
 class MainActivity : ComponentActivity() {
@@ -41,6 +42,9 @@ class MainActivity : ComponentActivity() {
 
                         Spacer(modifier = Modifier.height(32.dp))
                         TextFieldExample(Modifier.padding(8.dp))
+
+                        Spacer(modifier = Modifier.height(32.dp))
+                        VerificationCodeInputExample(Modifier.padding(8.dp))
                     }
                 }
             }
