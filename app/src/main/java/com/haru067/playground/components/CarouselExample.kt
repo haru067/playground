@@ -44,11 +44,10 @@ private fun getActualPage(page: Int, actualPageCount: Int): Int {
 @Composable
 fun CarouselExample(modifier: Modifier = Modifier) {
     Box(modifier) {
-        val pagerState = rememberPagerState(initialPage = INITIAL_PAGE)
         val actualPageCount = pageColors.size
+        val pagerState = rememberPagerState(initialPage = INITIAL_PAGE) { if (actualPageCount > 0) PAGE_COUNT else 0 }
         HorizontalPager(
             state = pagerState,
-            pageCount = if (actualPageCount > 0) PAGE_COUNT else 0,
             modifier = Modifier.fillMaxSize(),
         ) { page ->
             val actualPage = getActualPage(page = page, actualPageCount = actualPageCount)
