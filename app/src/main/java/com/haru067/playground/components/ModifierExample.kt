@@ -70,7 +70,7 @@ internal fun IndicationExample(
 @Composable
 private fun PreviewModifierExample() {
   MaterialTheme {
-    ModifierExample(
+    IndicationExample(
       Modifier
           .background(MaterialTheme.colorScheme.background)
           .padding(16.dp)
