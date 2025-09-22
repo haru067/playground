@@ -1,9 +1,11 @@
 package com.haru067.playground
 
 import android.os.Bundle
-import android.view.Surface
-import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.animation.EnterTransition
+import androidx.compose.animation.ExitTransition
+import androidx.compose.animation.core.tween
+import androidx.compose.animation.fadeIn
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -27,6 +29,7 @@ import androidx.navigation.compose.rememberNavController
 import com.haru067.playground.components.ButtonExample
 import com.haru067.playground.components.CarouselExample
 import com.haru067.playground.components.FragmentExample
+import com.haru067.playground.components.LifecycleExample
 import com.haru067.playground.components.RowExample
 import com.haru067.playground.components.TextFieldExample
 import com.haru067.playground.components.VerificationCodeInputExample
@@ -41,10 +44,24 @@ class MainActivity : FragmentActivity() {
 
             PlaygroundTheme {
                 Surface(modifier = Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background) {
-                    NavHost(navController = navController, startDestination = "fragment") {
-                        composable("profile") { }
+                    NavHost(
+                        // enterTransition = { EnterTransition.None },
+                        exitTransition = { ExitTransition.None },
+                        popEnterTransition = {
+                            fadeIn(animationSpec = tween(700))
+                        },
+                        popExitTransition = { ExitTransition.None },
+                        navController = navController,
+                        startDestination = "lifecycle",
+                    ) {
+                        composable("profile") { Examples() }
                         composable("examples") { Examples() }
                         composable("fragment") { FragmentExample() }
+                        composable("lifecycle") {
+                            LifecycleExample(
+                                navigateToProfile = { navController.navigate("profile") }
+                            )
+                        }
                         /*...*/
                     }
                 }

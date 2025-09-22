@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">playground</string>
+    <string name="test_text">layground</string>
+    <string name="test_tex">laround</string>
 </resources>
