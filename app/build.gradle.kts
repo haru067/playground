@@ -45,6 +45,12 @@ android {
     }
 }
 
+composeCompiler {
+  enableStrongSkippingMode = true
+  reportsDestination = layout.buildDirectory.dir("compose_compiler")
+  metricsDestination = layout.buildDirectory.dir("compose_compiler")
+}
+
 dependencies {
     implementation("androidx.navigation:navigation-compose:2.9.4")
     implementation("androidx.core:core-ktx:1.17.0")

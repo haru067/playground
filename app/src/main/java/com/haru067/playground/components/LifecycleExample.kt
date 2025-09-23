@@ -10,23 +10,23 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalLifecycleOwner
-import androidx.lifecycle.compose.LifecycleEventEffect
-import androidx.lifecycle.compose.LifecycleResumeEffect
+import com.haru067.playground.components.strongskipping.StrongSkippingExample
 
 @Composable
 fun LifecycleExample(
-    modifier: Modifier = Modifier,
-    navigateToProfile: () -> Unit,
+  modifier: Modifier = Modifier,
+  navigateToProfile: () -> Unit,
 ) {
-    val currentState by LocalLifecycleOwner.current.lifecycle.currentStateFlow.collectAsState()
-    LaunchedEffect(currentState) {
-        Log.d("LifecycleExample", "currentState: $currentState")
+  val currentState by LocalLifecycleOwner.current.lifecycle.currentStateFlow.collectAsState()
+  LaunchedEffect(currentState) {
+    Log.d("LifecycleExample", "currentState: $currentState")
 
+  }
+  Column(modifier) {
+    Text("LifecycleExample")
+    Button(onClick = navigateToProfile) {
+      Text("Navigate to Profile")
     }
-    Column(modifier) {
-        Text("LifecycleExample")
-        Button(onClick = navigateToProfile) {
-            Text("Navigate to Profile")
-        }
-    }
+    StrongSkippingExample()
+  }
 }
